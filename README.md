@@ -7,4 +7,4 @@
 - it initializes using a hash object and this fact allows to add atributes without overcluttering
 - it has public, private methods and attre_readers
 - it allows to have a short chat with a barista
-
+- method to_s was ovverriden and this allows to have better output when printing class object)
