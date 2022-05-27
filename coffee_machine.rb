@@ -65,7 +65,7 @@ class CoffeeMachine
   end
 end
 
-john = CoffeeMachine.new({ name: 'john', water_capacity: 0.2, menu: %w(capuchino, latte) })
+john = CoffeeMachine.new({ name: 'john', water_capacity: 0.2, menu: %w[capuchino latte] })
 p CoffeeMachine.count_of_baristas
 p john.what_can_you_serve
 p john.cook('latte')
