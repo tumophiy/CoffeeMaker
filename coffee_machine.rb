@@ -72,3 +72,4 @@ p john.cook('latte')
 p john.happiness
 p john.talking_to_barista('please boil_water')
 puts john
+# test line
