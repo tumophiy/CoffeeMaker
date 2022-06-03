@@ -1,5 +1,12 @@
+# module Barista
+#   # attr_reader :happiness
+#   @count_of_baristas = 0
+#   attr_accessor :count_of_baristas
+# end
+
 class CoffeeMachine
-  @@count_of_baristas = 0
+  # include Barista
+  # self.count_of_baristas = 0
   attr_reader :water_capacity, :happiness
 
   def initialize(hash)
@@ -7,7 +14,7 @@ class CoffeeMachine
     @happiness = 0.5
     @water_capacity = hash[:water_capacity]
     @menu = hash[:menu]
-    @@count_of_baristas += 1
+    # self.count_of_baristas += 1
   end
 
   def what_can_you_serve
@@ -16,9 +23,9 @@ class CoffeeMachine
     '-' * 20
   end
 
-  def self.count_of_baristas
-    "Count of all baristas = #{@@count_of_baristas}"
-  end
+  # def self.count_of_baristas
+  #   "Count of all baristas = #{self.count_of_baristas}"
+  # end
 
   def cook(item_name)
     return 'your barista is dead tired, sorry for not helping you' unless @happiness.positive?
@@ -65,11 +72,59 @@ class CoffeeMachine
   end
 end
 
+class TypeMachine < CoffeeMachine
+  def initialize
+    #here should be added parameter called @type
+  end
+
+  def what_type?
+    "your machine is #{type}"
+  end
+end
+class SizeMachine < TypeMachine
+  def initialize(size)
+    super()
+    @size = size
+    @type = "auto"
+  end
+
+  def to_s
+    "I'm #{@name}, my happiness = #{@happiness * 100}% and water capacity of my coffe machine is #{@water_capacity}l. 
+    and i have size of #{@size}"
+  end
+
+  def fit?(array_of_sizes)
+    return true if size.all?.with_index { |value, index| value > array_of_sizes[index] }
+    false
+  end
+end
+
+class BigMachine < SizeMachine
+  def initialize(size = [40, 60, 50])
+    super()
+  end
+end
+
+class SmallMachine < SizeMachine
+  def initialize(size = [20, 20, 20])
+    super()
+  end
+end
+
+class V50 < TypeMachine
+  def initialize
+    @type = "mechanical"
+  end
+end
+
 john = CoffeeMachine.new({ name: 'john', water_capacity: 0.2, menu: %w[capuchino latte] })
-p CoffeeMachine.count_of_baristas
+# p CoffeeMachine.count_of_baristas
 p john.what_can_you_serve
 p john.cook('latte')
 p john.happiness
 p john.talking_to_barista('please boil_water')
 puts john
 # test line
+
+bigmachine = BigMachine.new({ name: 'tim', water_capacity: 0.3 })
+puts bigmachine
