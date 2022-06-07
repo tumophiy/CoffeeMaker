@@ -16,14 +16,14 @@ class Barista
   end
 
   def minus_happines
-    return 'your barista is dead tired, sorry for not helping you' unless @barista.happiness.positive?
+    return 'your barista is dead tired, sorry for not helping you' unless @happiness.positive?
 
     @happiness -= 0.1
   end
 
   def talking_to_barista(string)
     if string.include?(':)')
-      @barista.happiness += 0.2
+      @happiness += 0.2
     elsif string.include?('please boil_water')
       boil_water
     else

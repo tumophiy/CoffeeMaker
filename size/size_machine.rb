@@ -18,22 +18,3 @@ class SizeMachine
     puts "your machine type is #{@type}"
   end
 end
-
-# checks for valid params, type is auto if no type was given
-class BigMachine < SizeMachine
-  def initialize(size, type = 'auto')
-    super(size, type)
-  end
-
-  private
-
-  def checking_size
-  end
-end
-
-# checks for valid params, type is auto if no type was given
-class SmallMachine < SizeMachine
-  def initialize(size, type = 'auto')
-    super(size, type)
-  end
-end
