@@ -12,11 +12,11 @@ require_relative 'water_container'
 class CoffeeMachine
   include PrivateMethodsOfCoffeMachine
 
-  def initialize(hash)
-    @name = hash[:name]
-    @barista = hash[:barista]
-    @water = hash[:water]
-    @menu = hash[:menu]
+  def initialize(name:, barista:, water:, menu:)
+    @name = name
+    @barista = barista
+    @water = water
+    @menu = menu
   end
 
   def barista_name
